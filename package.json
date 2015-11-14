@@ -7,6 +7,10 @@
   "bin": {
     "jsonjs": "./dist/bin.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:ericwooley/jsonjs.git"
+  },
   "scripts": {
     "test": "rm -rf dist && standard src/ && npm run build && mocha --recursive dist/tests",
     "build": "babel src --out-dir dist --source-maps",
