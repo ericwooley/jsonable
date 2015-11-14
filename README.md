@@ -1,7 +1,7 @@
 # jsonable
 ## Composable javascript
 
-`npm install --save-dev jsonjs`
+`npm install --save-dev jsonable`
 
 ### Usage
 
