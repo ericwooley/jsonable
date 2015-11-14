@@ -1,5 +1,5 @@
 {
-  "name": "jsonjs",
+  "name": "jsonable",
   "version": "0.0.1",
   "description": "Composable json via javascript",
   "main": "dist/index.js",
