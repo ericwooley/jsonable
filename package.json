@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com:ericwooley/jsonjs.git"
+    "url": "https://github.com:ericwooley/jsonable.git"
   },
   "scripts": {
     "test": "rm -rf dist && standard src/ && npm run build && mocha --recursive dist/tests",
