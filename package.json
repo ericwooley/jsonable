@@ -1,0 +1,33 @@
+{
+  "name": "jsonjs",
+  "version": "0.0.1",
+  "description": "Composable json via javascript",
+  "main": "dist/index.js",
+  "author": "Eric Wooley <ericwooley@gmail.com>",
+  "bin": {
+    "jsonjs": "./dist/bin.js"
+  },
+  "scripts": {
+    "test": "rm -rf dist && standard src/ && npm run build && mocha --recursive dist/tests",
+    "build": "babel src --out-dir dist --source-maps",
+    "watch": "nodemon --watch src/ --exec \"npm run test\"",
+    "prepublish": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-cli": "^6.1.18",
+    "babel-plugin-transform-es2015-modules-umd": "^6.1.18",
+    "babel-preset-es2015": "^6.1.18",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.3",
+    "nodemon": "^1.8.1",
+    "npm-watch": "0.0.1",
+    "standard": "^5.3.1"
+  }
+}
