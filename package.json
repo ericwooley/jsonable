@@ -1,6 +1,6 @@
 {
   "name": "jsonable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Composable json via javascript",
   "main": "dist/index.js",
   "author": "Eric Wooley <ericwooley@gmail.com>",
