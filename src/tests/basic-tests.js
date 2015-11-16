@@ -19,17 +19,22 @@ describe('Basic Functionality', () => {
     const output = fs.readFileSync(out).toString()
     expect(output).to.equal(JSON.stringify(basicPojo))
   })
-  it.only('should handle internal requires properly', () => {
+  it('should handle internal requires properly', () => {
     // console.log('JSON TEST', require('./files/basic.json'))
     const out = 'dist/tests/out-files/require-test.json'
     const entry = 'dist/tests/files/json-include.json.js'
 
     jsonjs({
       entry,
-      out,
-      debug: true
+      out
+      // debug: true
     })
     const output = fs.readFileSync(out).toString()
-    expect(output).to.equal(JSON.stringify({}))
+    expect(output).to.equal(JSON.stringify({
+      basicJson: {
+        test: 'test',
+        number: 1
+      }
+    }))
   })
 })

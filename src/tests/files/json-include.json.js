@@ -1,8 +1,6 @@
 /* globals requireJSON */
-console.log('filedirname', __dirname)
+const basicJson = require('./basic.json')
 
-var test = require(__dirname + '/basic.json')
-// console.log('test', test)
 export const jsonExport = {
-  outerTest: 'test'
+  basicJson
 }

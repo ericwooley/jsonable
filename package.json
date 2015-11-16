@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "rm -rf dist && standard src/ && npm run build && mocha --recursive dist/tests",
-    "build": "babel src --out-dir dist --source-maps && echo '\\n Finished transpile \\n'",
+    "build": "mkdir -p dist/tests/files && cp src/tests/files/*.json dist/tests/files && babel src --out-dir dist --source-maps && echo '\\n Finished transpile \\n'",
     "watch": "nodemon --watch src/ --exec \"npm run test\"",
     "prepublish": "npm run build"
   },
