@@ -1,4 +1,7 @@
 # jsonable
+[![Build Status](https://travis-ci.org/ericwooley/jsonable.svg)](https://travis-ci.org/ericwooley/jsonable)
+[![Code Climate](https://codeclimate.com/github/ericwooley/jsonable/badges/gpa.svg)](https://codeclimate.com/github/ericwooley/jsonable)
+[![Test Coverage](https://codeclimate.com/github/ericwooley/jsonable/badges/coverage.svg)](https://codeclimate.com/github/ericwooley/jsonable/coverage)
 ## Composable javascript
 
 `npm install --save-dev jsonable`
