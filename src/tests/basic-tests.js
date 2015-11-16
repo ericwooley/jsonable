@@ -3,6 +3,7 @@ import {expect} from 'chai'
 import jsonjs from '../index'
 import basicPojo from './files/basic-pojo.json'
 import fs from 'fs'
+
 describe('Basic Functionality', () => {
   it('should exist', () => {
     expect(jsonjs).to.exist
@@ -17,5 +18,18 @@ describe('Basic Functionality', () => {
     })
     const output = fs.readFileSync(out).toString()
     expect(output).to.equal(JSON.stringify(basicPojo))
+  })
+  it.only('should handle internal requires properly', () => {
+    // console.log('JSON TEST', require('./files/basic.json'))
+    const out = 'dist/tests/out-files/require-test.json'
+    const entry = 'dist/tests/files/json-include.json.js'
+
+    jsonjs({
+      entry,
+      out,
+      debug: true
+    })
+    const output = fs.readFileSync(out).toString()
+    expect(output).to.equal(JSON.stringify({}))
   })
 })

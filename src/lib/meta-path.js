@@ -5,6 +5,11 @@ function deriveLeadingLast (path, dilemeter) {
   return {last, leading}
 }
 
+export function getAbsolutePath (src) {
+  if (src.charAt(0) === '/') return src
+  return process.env.PWD + '/' + src
+}
+
 export default function metaPath (fullPath) {
   const pathInfo = deriveLeadingLast(fullPath, '/')
   const path = pathInfo.leading
@@ -12,5 +17,8 @@ export default function metaPath (fullPath) {
   const fileInfo = deriveLeadingLast(fileName, '.')
   const typelessName = fileInfo.leading
   const type = fileInfo.last
-  return { type, fileName, typelessName, path }
+  // const cleanPath = ((path ? (path + '/') : '') + fileName).replace(process.env.PWD, '')
+  const absolutePath = getAbsolutePath(fullPath)
+  const absoluteFolder = absolutePath.replace(fileName, '')
+  return { type, fileName, typelessName, path, absolutePath, absoluteFolder }
 }

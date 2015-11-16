@@ -9,23 +9,33 @@ function debugFactory (output = false) {
   }
 }
 
-export function getAbsolutePath (src) {
-  if (src.charAt(0) === '/') return src
-  return process.env.PWD + '/' + src
-}
-
 export default (options = {}) => {
   options = Object.assign(defaultConfig, options)
   const debug = debugFactory(options.debug)
-  const entryPoint = getAbsolutePath(options.entry)
-  const outFile = getAbsolutePath(options.out)
+  const entryMeta = metaPath(options.entry)
+  debug('entry meta', entryMeta)
+  const entryPoint = entryMeta.absolutePath
+  const outFileMeta = metaPath(options.out)
+  debug('out meta', outFileMeta)
+  const outFile = outFileMeta.absolutePath
   debug('loading file: ', entryPoint)
-  const entryJs = require(entryPoint)
+  const cwd = process.cwd()
+  process.chdir(entryMeta.path)
+  debug(process.cwd())
+  const entryJs = require(entryMeta.absolutePath)
   const json = entryJs.jsonExport || entryJs.default
   debug('file loaded', entryJs)
-  const outFileInfo = metaPath(outFile)
-  mkdirp.sync(outFileInfo.path)
+  mkdirp.sync(outFileMeta.absoluteFolder)
   debug('writing file', outFile, json)
   const writePointer = fs.openSync(outFile, 'w')
   fs.writeSync(writePointer, JSON.stringify(json, null, options.spaces))
+  process.chdir(cwd)
+}
+
+global.requireJSON = (filename, encoding = 'utf8') => {
+	// read file synchroneously
+	console.log('requireing', filename, __dirname)
+  var contents = fs.readFileSync(filename, encoding)
+	// parse contents as JSON
+  return JSON.parse(contents)
 }
