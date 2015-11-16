@@ -12,9 +12,9 @@
     "url": "https://github.com:ericwooley/jsonable.git"
   },
   "scripts": {
-    "test": "rm -rf dist && standard src/ && npm run build && istanbul cover _mocha --recursive dist/tests",
-    "build": "mkdir -p dist/tests/files && cp src/tests/files/*.json dist/tests/files && babel src --out-dir dist --source-maps && echo '\\n Finished transpile \\n'",
-    "watch": "nodemon --watch src/ --exec \"npm run test\"",
+    "test": "istanbul cover _mocha -- --compilers js:babel-core/register --recursive tests",
+    "build": "babel src --out-dir dist --source-maps && echo '\\n Finished transpile \\n'",
+    "watch": "nodemon --watch src/ --watch tests/ --exec \"npm run test\"",
     "prepublish": "npm run build"
   },
   "license": "ISC",
@@ -33,6 +33,7 @@
     "mocha": "^2.3.3",
     "nodemon": "^1.8.1",
     "npm-watch": "0.0.1",
+    "source-map-support": "^0.3.3",
     "standard": "^5.3.1"
   }
 }
