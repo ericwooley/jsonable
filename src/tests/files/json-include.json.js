@@ -1,4 +1,3 @@
-/* globals requireJSON */
 const basicJson = require('./basic.json')
 
 export const jsonExport = {

@@ -19,9 +19,6 @@ export default (options = {}) => {
   debug('out meta', outFileMeta)
   const outFile = outFileMeta.absolutePath
   debug('loading file: ', entryPoint)
-  const cwd = process.cwd()
-  process.chdir(entryMeta.path)
-  debug(process.cwd())
   const entryJs = require(entryMeta.absolutePath)
   const json = entryJs.jsonExport || entryJs.default
   debug('file loaded', entryJs)
@@ -29,13 +26,4 @@ export default (options = {}) => {
   debug('writing file', outFile, json)
   const writePointer = fs.openSync(outFile, 'w')
   fs.writeSync(writePointer, JSON.stringify(json, null, options.spaces))
-  process.chdir(cwd)
-}
-
-global.requireJSON = (filename, encoding = 'utf8') => {
-	// read file synchroneously
-	console.log('requireing', filename, __dirname)
-  var contents = fs.readFileSync(filename, encoding)
-	// parse contents as JSON
-  return JSON.parse(contents)
 }
